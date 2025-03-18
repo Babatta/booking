@@ -27,7 +27,19 @@ class PropertySeeder extends Seeder
         Property::create([
             'name' => 'Maison moderne',
             'description' => 'Maison moderne  située à la lille.',
+            'price_per_night' => 800,
+        ]);
+
+        Property::create([
+            'name' => 'MRésidence alphine',
+            'description' => 'Maison moderne  située Nice',
             'price_per_night' => 200,
+        ]);
+
+        Property::create([
+            'name' => 'Maison pied sur mer',
+            'description' => 'Maison moderne  située Monpellier.',
+            'price_per_night' => 500,
         ]);
     }
 }

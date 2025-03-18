@@ -9,9 +9,16 @@ use App\Models\Users;
 class Property extends Model
 {
     protected $fillable = [
-        
+
         'name', 
         'description', 
         'price_per_night',
     ];
+
+    // UN bien peut etre reserver plusieur fois
+public function bookings()
+{
+    return $this->hasMany(Booking::class);
+}
+
 }

@@ -5,26 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        .visible-button {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: white;
+        }
+
+        .visible-button:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* léger fond blanc au survol */
+            border-color: white;
+            color: white;
+        }
+
+        .visible-button-primary {
+            border-color: blue;
+            color: blue;
+        }
+
+        .visible-button-primary:hover {
+            background-color: blue;
+            color: white;
+        }
+
+        .visible-button-secondary {
+            border-color: green;
+            color: green;
+        }
+
+        .visible-button-secondary:hover {
+            background-color: green;
+            color: white;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-900 flex justify-center items-center min-h-screen">
+<body class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-gray-900 flex justify-center items-center min-h-screen">
 
-    <div class="text-center p-6 bg-white shadow-md rounded-md">
-        <h1 class="text-2xl font-bold text-primary mb-4">Bienvenue sur notre plateforme</h1>
+    <div class="text-center p-8 bg-white bg-opacity-90 shadow-lg rounded-xl w-full max-w-lg">
+        <h1 class="text-4xl font-extrabold text-indigo-700 mb-6">Bienvenue sur notre plateforme</h1>
 
-        @if (Route::has('login'))
-            <div class="mb-4">
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="bg-primary text-white px-4 py-2 rounded">Accéder au Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
-                        Se connecter
-                    </a>
-                    <a href="{{ route('register') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-700">
-                        Créer un compte
-                    </a>
-                @endauth
-            </div>
-        @endif
+        <p class="text-lg text-gray-600 mb-8">Votre espace réservé pour des expériences uniques.</p>
+
+        <!-- Les boutons "Se connecter" et "Créer un compte" -->
+        <div class="space-y-4">
+            <a href="{{ route('login') }}" class="w-full py-3 px-6 visible-button visible-button-primary font-semibold rounded-lg shadow-md transition duration-300">
+                Se connecter
+            </a>
+
+            <a href="{{ route('register') }}" class="w-full py-3 px-6 visible-button visible-button-secondary font-semibold rounded-lg shadow-md transition duration-300">
+                Créer un compte
+            </a>
+        </div>
     </div>
 
 </body>

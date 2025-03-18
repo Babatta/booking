@@ -22,17 +22,55 @@ class PropertyResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
-                //
-            ]);
+        ->schema([
+            Forms\Components\TextInput::make('name')
+                ->label('Nom de la propriété')
+                ->required(),
+
+            Forms\Components\TextInput::make('address')
+                ->label('Adresse')
+                ->required(),
+
+            Forms\Components\Textarea::make('description')
+                ->label('Description'),
+
+               // corresction
+                Forms\Components\TextInput::make('price_per_night')
+                    ->label('Prix par nuit')
+                    ->required()
+                    ->numeric() 
+                    ->maxLength(8), 
+
+
+            Forms\Components\DatePicker::make('available_from')
+                ->label('Disponible à partir de')
+                ->required(),
+        ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                //
-            ])
+        ->columns([
+            Tables\Columns\TextColumn::make('name')
+                ->label('Nom')
+                ->sortable()
+                ->searchable(),
+
+            Tables\Columns\TextColumn::make('address')
+                ->label('Adresse')
+                ->sortable()
+                ->searchable(),
+
+                // Remplacement dans la table aussi
+                Tables\Columns\TextColumn::make('price_per_night')
+                    ->label('Prix par nuit')
+                    ->sortable(),
+
+            Tables\Columns\TextColumn::make('available_from')
+                ->label('Disponible depuis')
+                ->sortable(),
+        ])
             ->filters([
                 //
             ])
